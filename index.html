@@ -857,6 +857,39 @@ nav {
 }
 .finale-sig.visible { opacity: 1; }
 
+/* CONTACT FOOTER */
+.contact-footer {
+  background: linear-gradient(135deg, #fff3d8 0%, #fff9f2 48%, #f5e1b5 100%);
+  border-top: 1px solid rgba(201,169,110,0.35);
+  padding: 1.15rem 1rem;
+  text-align: center;
+}
+
+.contact-footer p {
+  margin: 0;
+  color: var(--brown-soft);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.contact-footer strong {
+  color: var(--gold-dark);
+  font-weight: 500;
+}
+
+.contact-footer a {
+  color: #188f4f;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(24,143,79,0.35);
+}
+
+.contact-footer a:hover {
+  color: #0d6f3a;
+  border-bottom-color: currentColor;
+}
+
 /* COUPLE PORTRAITS */
 .portraits-section {
   padding: 6rem 2rem;
@@ -1484,8 +1517,9 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 </script>
 </script>
 <footer class="contact-footer" aria-label="Contact">
-  <p style="margin:0;padding:1rem 0;text-align:center;font-size:0.95rem;color:var(--muted);background:transparent;">
-    Eng David ayman — WhatsApp: <a href="https://wa.me/201207809980" style="color:var(--gold);text-decoration:none;">01207809980</a>
+  <p>
+    <strong>Eng David Ayman</strong> — WhatsApp:
+    <a href="https://wa.me/201207809980">01207809980</a>
   </p>
 </footer>
 </body>
