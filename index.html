@@ -66,39 +66,73 @@ body {
 #intro {
   position: fixed;
   inset: 0;
-  background: var(--warm-white);
+  background: #fff8ef;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.65rem;
   transition: opacity 1s ease, transform 1.2s ease;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 2rem;
 }
 #intro.fade-out { opacity: 0; transform: translateY(-30px); pointer-events: none; }
 
+#intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255,248,239,0.98) 0%, rgba(255,248,239,0.88) 46%, rgba(255,248,239,0.42) 100%),
+    url('11.jpeg') center right / cover no-repeat;
+  opacity: 0.9;
+  z-index: -2;
+}
+
+#intro::after {
+  content: "";
+  position: absolute;
+  inset: 1.5rem;
+  border: 1px solid rgba(201,169,110,0.38);
+  box-shadow: inset 0 0 0 8px rgba(255,255,255,0.28), 0 24px 80px rgba(160,120,64,0.12);
+  z-index: -1;
+}
+
 .formula-text {
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 500;
-  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 400;
+  font-size: clamp(1rem, 3vw, 1.45rem);
   letter-spacing: 0.25em;
-  color: var(--gold-dark);
+  color: #b8843e;
   text-transform: uppercase;
-  text-shadow: 0 6px 20px rgba(0,0,0,0.45);
+  text-shadow: 0 6px 28px rgba(201,169,110,0.35);
   opacity: 0;
   animation: fadeUp 1s ease 0.5s forwards;
+}
+
+.formula-text::before,
+.formula-text::after {
+  content: "";
+  display: inline-block;
+  width: 2.5rem;
+  height: 1px;
+  margin: 0 1rem 0.35rem;
+  background: linear-gradient(to right, transparent, #d6a85b, transparent);
 }
 
 .intro-tagline {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: clamp(1.2rem, 3vw, 1.8rem);
-  color: var(--brown-soft);
+  color: #6b4b33;
   text-align: center;
   line-height: 1.8;
   opacity: 0;
   animation: fadeUp 1s ease 1.2s forwards;
   max-width: 500px;
+  text-shadow: 0 2px 14px rgba(255,255,255,0.95);
 }
 
 .intro-names {
@@ -108,40 +142,74 @@ body {
   gap: 0.5rem;
   opacity: 0;
   animation: fadeUp 1s ease 2s forwards;
+  position: relative;
+  padding: 0.65rem 0;
+}
+
+.intro-names::before {
+  content: "Wedding Invitation";
+  color: #c79a50;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  margin-bottom: 0.55rem;
+}
+
+.intro-names::after {
+  content: "";
+  width: min(20rem, 65vw);
+  height: 1px;
+  margin-top: 0.65rem;
+  background: linear-gradient(to right, transparent, rgba(201,169,110,0.8), transparent);
 }
 .intro-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.5rem, 7vw, 5rem);
-  font-weight: 300;
-  color: var(--charcoal);
+  font-weight: 400;
+  color: #1d1712;
   letter-spacing: 0.05em;
   line-height: 1;
+  text-shadow: 0 10px 38px rgba(160,120,64,0.18), 0 1px 0 rgba(255,255,255,0.85);
 }
 .intro-amp {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 2rem;
-  color: var(--gold);
+  font-size: 2.4rem;
+  color: #c79342;
   line-height: 1.5;
+  text-shadow: 0 0 20px rgba(232,213,163,0.8);
 }
 
 .intro-enter {
-  margin-top: 2rem;
+  margin-top: 1.25rem;
   padding: 1rem 3rem;
-  border: 1px solid var(--gold);
-  background: transparent;
-  color: var(--charcoal);
+  border: 1px solid rgba(184,132,62,0.75);
+  background: rgba(255,255,255,0.72);
+  color: #2a2018;
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 0.8rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   cursor: none;
   opacity: 0;
   animation: fadeUp 1s ease 2.8s forwards;
-  transition: background 0.3s ease, color 0.3s ease;
+  box-shadow: 0 14px 35px rgba(201,169,110,0.18);
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
-.intro-enter:hover { background: var(--gold); color: white; }
+.intro-enter:hover {
+  background: #c79342;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 45px rgba(201,169,110,0.34);
+}
+
+.enter-hint {
+  color: #6b4b33;
+  text-shadow: 0 2px 12px rgba(255,255,255,0.9);
+}
 
 /* MUSIC CONTROL */
 .music-btn {
@@ -218,7 +286,7 @@ nav {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('11.jpeg');
+  background-image: url('10.jpeg');
   background-size: cover;
   background-position: center top;
   opacity: 0.4;
@@ -967,6 +1035,14 @@ nav {
   .timeline-item:nth-child(odd) .timeline-photo { grid-column: 1; }
   .countdown-grid { gap: 1.5rem; }
   .portraits-section { gap: 2rem; }
+}
+
+@media (min-width: 769px) {
+  #intro::before {
+    background:
+      linear-gradient(90deg, rgba(255,248,239,0.98) 0%, rgba(255,248,239,0.92) 45%, rgba(255,248,239,0.58) 68%, rgba(255,248,239,0.2) 100%),
+      url('11.jpeg') right center / auto 100% no-repeat;
+  }
 }
 
 /* SECTION SEPARATOR */
